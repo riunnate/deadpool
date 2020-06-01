@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "278216050337",
+    "firebase_url": "https://deadpool-7de31.firebaseio.com",
+    "project_id": "deadpool-7de31",
+    "storage_bucket": "deadpool-7de31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278216050337:android:8211652e0314c0957b12e0",
+        "android_client_info": {
+          "package_name": "com.deadpool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278216050337-7fav6i2jti9j34q22frb3qg7s21kttn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbQM2Jqeo5RwdheJMPcelLDiH_kYuuVhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278216050337-7fav6i2jti9j34q22frb3qg7s21kttn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
