@@ -9,54 +9,41 @@ import {
 } from 'react-native';
 
 import {Button, Input} from 'react-native-elements';
-import firebase from 'firebase';
+import auth from '@react-native-firebase/auth';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDPZEWzuG6GnG4tEPUaSEOQ9sLmFSpU9KM",
-    authDomain: "deadpool-7de31.firebaseapp.com",
-    databaseURL: "https://deadpool-7de31.firebaseio.com",
-    projectId: "deadpool-7de31",
-    storageBucket: "deadpool-7de31.appspot.com",
-    messagingSenderId: "278216050337",
-    appId: "1:278216050337:web:2678eb4366c2731d7b12e0",
-    measurementId: "G-57WJDQYG3C"
-  };
-  // Initialize Firebase
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
 export default class login extends React.Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = ({
-        email : '',
-        password : ''
+          email: '',
+          password: ''
         })
     }
-
-    signup = (email, password) =>
-    {
-        try{
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-        }
-        catch(error)
-        {
-            console.log(error.toString())
-        }
-   
+    signin = (email, password) => {
+        auth()
+          .signInWithEmailAndPassword(email,password)
+          .then(() => {
+            console.log('User account created & signed in!');
+            this.props.navigation.navigate("Main");
+          })
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              console.log('That email address is already in use!');
+              alert('That email address is already in use!');
+            }
+    
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+              alert('That email address is invalid!');
+            }
+    
+            console.error(error);
+          });
     }
-    signin = (email, password) =>
-    {
-        try{
-            firebase.auth().signInWithEmailAndPassword(email, password)
-            console.log("login")
-        }
-        catch(error)
-        {
-            console.log(error.toString())
-        }
-
+    logoff = () => {
+        auth()
+          .signOut()
+          .then(() => console.log('User signed out!'));
     }
     render() {
         return (
@@ -84,9 +71,9 @@ export default class login extends React.Component {
                             onPress = {()=> this.signin(this.state.email, this.state.password)}
                         />
                         <View style = {{ height : 20}}/>
-                        <Button 
-                            title = "Sign UP"
-                            onPress = {()=> this.signup(this.state.email, this.state.password)}
+                        <Button
+                        title="Sign UP"
+                        onPress={() => this.props.navigation.navigate("User_register")}
                         />
                     </View>
                 </View>
