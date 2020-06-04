@@ -16,9 +16,9 @@ export default class Main extends React.Component {
                 <Text style = {{fontSize : 20}}>
                     MAIN PAGE
                 </Text>
-                <TouchableOpacity style = {{marginTop : 20}} onPress={() => this.props.navigation.navigate('Login')}>
+                <TouchableOpacity style = {{marginTop : 20}} onPress={() => this.props.navigation.navigate('FDBtest')}>
                     <Text style = {{fontSize : 20}}>
-                        Welcome
+                        DBtest
                     </Text>
                 </TouchableOpacity>
             </View>
